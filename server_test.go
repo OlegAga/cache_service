@@ -22,7 +22,7 @@ func TestCreateStore(t *testing.T) {
 	resp, err := client.Do(req)
 	defer resp.Body.Close()
 	if err != nil || resp == nil || resp.Status != statusOK {
-		t.Error("TestGetNotExistingKey() failed", err, resp)
+		t.Error("TestCreateStore() failed", err, resp)
 	}
 }
 
@@ -38,7 +38,7 @@ func TestGetNotExistingKey(t *testing.T) {
 
 func TestUpdateNotExistingKey(t *testing.T) {
 	client := &http.Client{}
-	req, err := http.NewRequest("PUT", "http://localhost:8000_temp", bytes.NewBufferString("hello up"))
+	req, err := http.NewRequest("PUT", "http://localhost:8000/syncstore/test/test_key", bytes.NewBufferString("hello up"))
 	resp, err := client.Do(req)
 	defer resp.Body.Close()
 	if err != nil || resp == nil || resp.Status != statusNotFound {
@@ -48,7 +48,7 @@ func TestUpdateNotExistingKey(t *testing.T) {
 
 func TestDeleteNotExistingKey(t *testing.T) {
 	client := &http.Client{}
-	req, err := http.NewRequest("DELETE", "http://localhost:8000_temp", bytes.NewBufferString(""))
+	req, err := http.NewRequest("DELETE", "http://localhost:8000/syncstore/test/test_key", bytes.NewBufferString(""))
 	resp, err := client.Do(req)
 	defer resp.Body.Close()
 	if err != nil || resp == nil || resp.Status != statusNotFound {
