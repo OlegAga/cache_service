@@ -9,8 +9,7 @@ Web Application based on Goji - A web microframework for Golang - http://goji.io
 
 `server.go`
 
-This file starts your web application and also contains routes definition.
-  
+This file starts your web application and also contains routes definition.  
      
 # To start server
 
